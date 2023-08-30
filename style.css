@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: white;
+    font-family: 'Black Ops One', cursive;
+}
+
+body {
+    background-color: black;
+}
+
+.container .top-menu {
+    position: relative;
+    top: 0;
+    z-index: 1;
+    border-radius: 0px 0px 10px 10px;
+    right: 0;
+    padding: 10px;
+    background-color: rgb(255 255 255 / .3);
+}
+
+.container .top-menu a {
+    font-weight: bold;
+    color: rgb(255 255 255 / .6);
+    transition: .3s;
+    margin: 0px 10px;
+}
+
+.container .top-menu a:hover {
+    color: white;
+}
+
+.container .heading h1 {
+    margin: 20px;
+}
+
+.container {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    background-color: #5a26c4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.p1 h2,
+.p2 h2,
+.comp h2,
+.result h2 {
+    text-align: center;
+}
+
+.p1 .p1-pick,
+.p2 .p2-pick {
+    text-align: center;
+    line-height: 50px;
+    margin: 10px auto;
+    width: 200px;
+    height: 50px;
+    background-color: rgb(255 255 255 / .3);
+    border-radius: 8px;
+}
+
+.game-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.option div {
+    position: relative;
+    margin: 10px;
+    height: 100px;
+    width: 100px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+    filter: opacity(.5);
+}
+
+.option div:active {
+    transform: scale(1.05);
+    filter: opacity(1);
+}
+
+.batu {
+    background-image: url(asset/batu.jpg);
+}
+
+.kertas {
+    background-image: url(asset/kertas.jpg);
+}
+
+.gunting {
+    background-image: url(asset/gunting.jpg);
+}
+
+.p2 {
+    display: none;
+}
+
+.comp {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+.comp .comp-pick,
+.result .result-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    margin: 10px auto;
+    height: 100px;
+    width: 340px;
+    background-color: rgb(255 255 255 / .3);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.submit {
+    margin: 20px;
+}
+
+.submit button {
+    padding: 10px;
+    background-color: rgb(255 255 255 / .3);
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: .3s;
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.submit button:hover {
+    background-color: rgb(255 255 255 / 1);
+    color: #5a26c4;
+}
+
+
+@media (max-width: 730px) {
+    .game-content {
+        display: block;
+    }
+}
+
+@media (min-height: 741px) {
+    .container .top-menu {
+        position: absolute;
+        top: 0;
+    }
+}
