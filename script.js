@@ -38,6 +38,7 @@ for (let i = 0; i < musuh.length; i++) {
             p2Selection[2].removeAttribute('style');
             musuh[0].style.color = 'rgb(255 255 255 / 1)';
             musuh[1].style.color = 'rgb(255 255 255 / .6)';
+            resultContent.innerHTML = '';
         } else {
             player2.classList.remove('show');
             comp.classList.add('show');
@@ -58,6 +59,7 @@ for (let i = 0; i < musuh.length; i++) {
             musuh[0].style.color = 'rgb(255 255 255 / .6)';
             musuh[1].style.color = 'rgb(255 255 255 / 1)';
             compSelection = Math.random();
+            resultContent.innerHTML = '';
         }
     });
 }
@@ -67,18 +69,6 @@ const p1Selection = document.querySelectorAll('#p1 div');
 
 let p1 = null;
 for (let i = 0; i < p1Selection.length; i++) {
-    // p1Selection[i].addEventListener('mouseenter', function () {
-    //     if (vPlayer == true) {
-    //         p1Selection[i].style.filter = 'opacity(1)';
-    //         p1Selection[i].style.transform = 'scale(1.05)';
-    //     }
-    // });
-    // p1Selection[i].addEventListener('mouseout', function () {
-    //     if (vPlayer == true) {
-    //         p1Selection[i].style.filter = 'opacity(.5)';
-    //         p1Selection[i].style.transform = 'scale(1)';
-    //     }
-    // });
     p1Selection[i].addEventListener('click', function () {
         compPickBox.innerHTML = '';
         if (vComputer == true & vPlayer == false) {
@@ -135,14 +125,6 @@ const p2Selection = document.querySelectorAll('#p2 div');
 
 let p2 = null;
 for (let i = 0; i < p2Selection.length; i++) {
-    // p2Selection[i].addEventListener('mouseenter', function () {
-    //     p2Selection[i].style.filter = 'opacity(1)';
-    //     p2Selection[i].style.transform = 'scale(1.05)';
-    // });
-    // p2Selection[i].addEventListener('mouseout', function () {
-    //     p2Selection[i].style.filter = 'opacity(.5)';
-    //     p2Selection[i].style.transform = 'scale(1)';
-    // });
     p2Selection[i].addEventListener('click', function () {
         if (i == 0) {
             p2 = 'batu';
@@ -165,53 +147,79 @@ submit.addEventListener('click', function () {
     // rules
     p1Pick.innerHTML = '<h3>' + compSelection + '</h3>';
     if (vPlayer == true) {
-        if (p1 == p2) {
+        if (p1 == null || p2 == null) {
+            p1Pick.innerHTML = '<h3>Pilih dahulu!!!</h3>';
+            p2Pick.innerHTML = '<h3>Pilih dahulu!!!</h3>';
+            hasil = '';
+        } else if (p1 == p2) {
             hasil = 'seri';
+            p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+            p2Pick.innerHTML = '<h3>' + p2 + '</h3>';
         } else if (p1 == 'batu') {
             if (p2 == 'kertas') {
                 hasil = 'PLAYER 2 MENANG';
             } else {
                 hasil = 'PLAYER 1 MENANG';
             }
+            p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+            p2Pick.innerHTML = '<h3>' + p2 + '</h3>';
         } else if (p1 == 'kertas') {
             if (p2 == 'batu') {
                 hasil = 'PLAYER 1 MENANG';
             } else {
                 hasil = 'PLAYER 2 MENANG';
             }
+            p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+            p2Pick.innerHTML = '<h3>' + p2 + '</h3>';
         } else if (p1 == 'gunting') {
             if (p2 == 'batu') {
                 hasil = 'PLAYER 2 MENANG';
             } else {
                 hasil = 'PLAYER 1 MENANG';
             }
+            p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+            p2Pick.innerHTML = '<h3>' + p2 + '</h3>';
         }
     } else if (vComputer == true) {
-        if (p1 == compSelection) {
+        if (p1 == null) {
+            hasil = '';
+            p1Pick.innerHTML = '<h3>Pilih dahulu!!!</h3>';
+        } else if (p1 == compSelection) {
             hasil = 'seri';
+            compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
+            p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
         } else if (p1 == 'batu') {
             if (compSelection == 'kertas') {
+                p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+                compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
                 hasil = 'KOMPUTER MENANG';
             } else {
+                p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+                compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
                 hasil = 'PLAYER 1 MENANG';
             }
         } else if (p1 == 'kertas') {
             if (compSelection == 'batu') {
+                p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+                compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
                 hasil = 'PLAYER 1 MENANG';
             } else {
+                p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+                compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
                 hasil = 'KOMPUTER MENANG';
             }
         } else if (p1 == 'gunting') {
             if (compSelection == 'batu') {
+                p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+                compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
                 hasil = 'KOMPUTER MENANG';
             } else {
+                p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
+                compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
                 hasil = 'PLAYER 1 MENANG';
             }
         }
     }
-    p1Pick.innerHTML = '<h3>' + p1 + '</h3>';
-    p2Pick.innerHTML = '<h3>' + p2 + '</h3>';
-    compPickBox.innerHTML = '<h1>' + compSelection + '</h1>';
     resultContent.innerHTML = '<h1>' + hasil + '</h1>';
     document.querySelector('.result .result-content').style.display = 'flex';
     document.querySelector('.result .result-content').style.alignItems = 'center';
